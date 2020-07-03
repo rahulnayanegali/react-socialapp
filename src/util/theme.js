@@ -1,15 +1,18 @@
 export default {
+		
 	palette: {
+    // rgba(29,161,242,1.00)
+    // #1da1f2
 		primary: {
-		light: '#33c9dc',
-		main: '#3f51b5',
-		dark: '#008394',
+		light: '#6cd2ff',
+		main: '#1da1f2',
+		dark: '#0073bf',
 		contrastText: '#fff',
 		},
   secondary: {
-    light: '#ff6333',
-    main: '#ff3d00',
-    dark: '#b22a00',
+    light: '#ffffff',
+    main: '#ecf2d2',
+    dark: '#babfa1',
     contrastText: '#fff',
   },
   },
@@ -27,11 +30,13 @@ export default {
 		margin: '10px auto 10px auto'
 	},
 	textField: {
-		margin: '5px auto 5px auto'
+		margin: '5px auto 5px auto',
 	},
 	button: {
 		marginTop: 20,
-		position: 'relative',
+    position: 'relative',
+    // borderRadius: '30%',
+    width: '100%'
 	},
 	customError: {
 		color: 'red',
@@ -40,6 +45,17 @@ export default {
 	},
 	progress: {
 		position: 'absolute',
-	}
+	},
+	filledInput: {
+    label: {
+      "&$focusedLabel": {
+        color: "tomato", 
+        fontWeight: "bold"
+      },
+    }
+		
+
+	},
+
 }
 }

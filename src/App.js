@@ -4,6 +4,10 @@ import './App.css';
 import themeFile from './util/theme'
 import jwtDecode from 'jwt-decode';
 
+// Redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 // import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -30,11 +34,11 @@ if(token) {
 		authenticated = true;
 	}
 }
-
 class App extends Component {
 	render() {
 		return (
 			<MuiThemeProvider theme={theme}>
+				<Provider store={store}> 
 				<div className="App">
 					<Router>
 						<Navbar />
@@ -47,6 +51,8 @@ class App extends Component {
 						</div>
 					</Router>
 				</div>
+				</Provider>
+				
 			</MuiThemeProvider>
 			);
 	}
