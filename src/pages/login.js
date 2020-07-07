@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 import AppIcon from '../images/titleicon.svg';
-import axios from 'axios';
+import LoginImage from '../images/twitter_login_sidebar_illustration.png'
 import { Link } from 'react-router-dom';
 
 // Importing material ui
@@ -19,7 +19,6 @@ const styles = (theme) => ({
 	...theme.spreadIt
 });
 
-
 class login extends Component {
 	constructor() {
 		super();
@@ -29,16 +28,22 @@ class login extends Component {
 			errors: {},
 			buttonDisable: false,
 		}
-}
-
+   }
    componentWillReceiveProps(nextProps){
       if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
-      }
+	  }  
    }
+
+//    componentDidMount() {
+//     document.body.style.overflow = 'hidden';
+// }
+
+// componentWillUnmount() {
+//     document.body.style.overflow = 'unset';
+// }
 	handleSubmit = (event) => {
 		event.preventDefault();
-		
 		const userData = {
 			email: this.state.email,
 			password: this.state.password,
@@ -57,12 +62,12 @@ class login extends Component {
 		const { errors } = this.state;
 
 		return (
-			<Grid container className={classes.form}>
+			<Grid container className={classes.form} alignItems="stretch">
 				<Grid item sm/>
 				<Grid item sm>
-					<img src={AppIcon} height='100px' width='auto' className={classes.image} alt="LoginIcon" />
-					<Typography variant='h3' className={classes.pageTitle}>
-						Login
+					<img src={LoginImage} height='30%' width='auto' className={classes.image} alt="LoginIcon" />
+					<Typography variant='h5' className={classes.pageTitle} >
+               See what’s happening in the world right now
 					</Typography>
 					<form noValidate onSubmit={this.handleSubmit}>
 						<TextField 
@@ -100,7 +105,7 @@ class login extends Component {
 						<Button 
 							type="submit" 
 							variant="contained" 
-							color="primary" 
+							color={this.props.theme.darkMode? "secondary" : "primary" }
 							className={classes.button}
 							disabled={loading}
 						>
@@ -115,20 +120,22 @@ class login extends Component {
 				</Grid>
 				<Grid item sm/>
 			</Grid>
-		)
-	}
-}
+		);
+	};
+};
 
 login.propTypes = {
    classes: PropTypes.object.isRequired,
    loginUser: PropTypes.func.isRequired,
    user: PropTypes.object.isRequired,
    UI: PropTypes.object.isRequired,
+   theme: PropTypes.object.isRequired,
  }
 
  const mapStateToProps = (state) => ({
    user: state.user,
    UI: state.UI,
+   theme: state.theme,
  });
 const mapActionsToProps =  {
    loginUser
