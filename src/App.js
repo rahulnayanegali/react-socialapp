@@ -37,13 +37,13 @@ if(token) {
 	}
 }
 class App extends Component {
-  constructor(props, context) {
-		super(props, context);
-	// 	this.state = {
-	// 		dark:store.getState().theme.darkMode,
-    // }
-    // this.handleDarkMode = this.handleDarkMode.bind(this);
-   }
+//   constructor(props, context) {
+// 		super(props, context);
+// 	// 	this.state = {
+// 	// 		dark:store.getState().theme.darkMode,
+//     // }
+//     // this.handleDarkMode = this.handleDarkMode.bind(this);
+//    }
 //    handleDarkMode = () => {
 //      this.setState((state) => ({
 //        dark:store.getState().theme.darkMode,

@@ -23,9 +23,9 @@ const styles = {
 }
 
 class Tweet extends Component {
-	
+	//tweetId, likeCount, ,  commentCount
     render() {
-			const { classes, tweet: { tweetId, tweetHandle, tweetContent, createdAt, userImage, likeCount, commentCount} } = this.props
+			const { classes, tweet: { tweetHandle, tweetContent, createdAt, userImage} } = this.props
         return (
             <div>
 							<Card className={classes.card}>

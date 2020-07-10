@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import AppIcon from '../images/titleicon.svg';
+// import AppIcon from '../images/titleicon.svg';
 import LoginImage from '../images/twitter_login_sidebar_illustration.png'
 import { Link } from 'react-router-dom';
 
