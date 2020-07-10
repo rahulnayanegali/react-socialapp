@@ -105,7 +105,7 @@ class login extends Component {
 						<Button 
 							type="submit" 
 							variant="contained" 
-							color={this.props.theme.darkMode? "secondary" : "primary" }
+							color= "primary"
 							className={classes.button}
 							disabled={loading}
 						>

@@ -1,6 +1,5 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
-export default createMuiTheme( {																																																																																																																																																				
+export default {																																																																																																																																																				
     palette: {
       type: 'light',
       primary: {																														
@@ -22,7 +21,6 @@ export default createMuiTheme( {
   spreadIt: {
   form: {
       textAlign: 'center',
-      overflowY: 'hidden'
     },
     image: {
       margin: '20px auto auto auto'
@@ -99,4 +97,3 @@ export default createMuiTheme( {
   }
   }
   
-)

@@ -8,7 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import MuiSwitch from '@material-ui/core/Switch';
-import CssBaseline from '@material-ui/core/CssBaseline';
+
 // Redux 
 import {changedarkMode} from '../redux/actions/userActions';
 import { connect } from 'react-redux';
@@ -30,12 +30,10 @@ class Navbar extends Component {
 	   this.setState(state => ({
 		   checked:!state.checked
 	   }));
-	   
    }
-   componentDidUpdate(props) {
-	props.handleDarkMode();
-	
-   }
+//    componentDidUpdate(props) {
+// 	// props.handleDarkMode();
+//    }
 	render() {
 		// console.log(this.props.theme.darkMode)
 		// color= {this.state.checked ? "secondary" : "primary"}
@@ -55,7 +53,7 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-	classes: PropTypes.object.isRequired,
+	// classes: PropTypes.object.isRequired,
 	theme: PropTypes.object.isRequired,
 	changedarkMode: PropTypes.func.isRequired,
   }

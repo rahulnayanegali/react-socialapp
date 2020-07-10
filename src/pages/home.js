@@ -18,7 +18,7 @@ class home extends Component {
   }
 	render() {
     let redentTweetsMarkup = this.state.tweets ? (
-    this.state.tweets.map(tweet => <Tweet tweet={tweet}/>)
+    this.state.tweets.map(tweet => <Tweet tweet={tweet} key={tweet.tweetId}/>)
     ) : (
       <p>Loading...</p>
     )
