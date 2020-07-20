@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';	
 import Tweet from '../components/Tweet';
 import Profile from '../components/Profile';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getTweets } from '../redux/actions/dataActions';
 class home extends Component {
-  state = {
-    tweets: null,
-  }
+  // state = {
+  //   tweets: null,
+  // }
   componentDidMount() {
-    axios.get('./tweets')
-      .then(res => {
-        this.setState({
-          tweets: res.data
-        })
-      })
-      .catch(err => console.log(err));
+    this.props.getTweets(); 
+  }
+  componentWillUnmount() {
+    this.setState({
+      tweets:null
+    })
   }
 	render() {
-    let redentTweetsMarkup = this.state.tweets ? (
-    this.state.tweets.map(tweet => <Tweet tweet={tweet} key={tweet.tweetId}/>)
+    const { tweets, loading } = this.props.data;
+    let redentTweetsMarkup = !loading ? (
+    tweets.map(tweet => <Tweet tweet={tweet} key={tweet.tweetId} />)
     ) : (
       <p>Loading...</p>
     )
@@ -26,7 +28,7 @@ class home extends Component {
 			<Grid container spacing={10}>
 				<Grid item sm={8} xs={12}>
 					{/* <p>Content</p> */}
-          <p>{redentTweetsMarkup}</p>
+          {redentTweetsMarkup}
 				</Grid>
         <Grid item sm={4} xs={12}>
 					<Profile/>
@@ -36,4 +38,13 @@ class home extends Component {
 	}
 }
 
-export default home;
+home.propTypes = {
+  getTweets: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+}
+const mapStateToProps = state => ({
+  data: state.data,
+  user: state.user,
+});
+export default connect(mapStateToProps, { getTweets })(home);

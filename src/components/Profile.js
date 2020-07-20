@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
+import NecessaryButtons from '../util/NecessaryButtons';
 // Redux
 import { connect } from 'react-redux';
 import {logoutUser, uploadImage} from '../redux/actions/userActions';
@@ -56,12 +57,9 @@ class Profile extends Component {
                <div className="image-wrapper">
                   <img src={imageUrl} alt="profile" className="profile-image"/>
                   <input type="file" id="imageUnput" hidden="hidden" onChange={this.handleImageChange}/>
-                  <Tooltip title="Edit profle image" placement="top">
-                  <IconButton onClick={this.handleEditPicture} className="button">
+                  <NecessaryButtons tip="Edit profle image" onClick={this.handleEditPicture} btnClassName="button">
                      <EditIcon color="primary"/>
-                  </IconButton>
-                  </Tooltip>
-                  
+                  </NecessaryButtons>
                </div>
                <hr/>
                <div className="profile-details">
@@ -89,11 +87,9 @@ class Profile extends Component {
                <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
                {/* <hr/> */}
                </div>
-               <Tooltip title="Logout" placement="top">
-                  <IconButton onClick={this.handleLogout}>
-                     <KeyboardReturn color="primary" />
-                  </IconButton>
-               </Tooltip>
+               <NecessaryButtons tip="Logout" onClick={this.handleLogout} >
+                  <KeyboardReturn color="primary" />
+                  </NecessaryButtons>
                <EditDetails />
             </div>
          </Paper>

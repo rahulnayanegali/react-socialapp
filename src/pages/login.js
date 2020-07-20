@@ -34,6 +34,13 @@ class login extends Component {
       this.setState({ errors: nextProps.UI.errors });
 	  }  
    }
+   		// static getDerivedStateFromProps(props) {
+		// 	   if (props.UI.errors) {
+		// 		   return {
+		// 			   errors: props.UI.errors
+		// 		   }
+		// 	   }
+		//    }
 
 //    componentDidMount() {
 //     document.body.style.overflow = 'hidden';
