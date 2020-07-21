@@ -15,3 +15,4 @@ export const SET_TWEET = 'SET_TWEET';
 export const LIKE_TWEET = 'LIKE_TWEET';
 export const DISLIKE_TWEET = 'DISLIKE_TWEET';
 export const DELETE_TWEET = 'DELETE_TWEET';
+export const POST_TWEET = 'POST_TWEET';

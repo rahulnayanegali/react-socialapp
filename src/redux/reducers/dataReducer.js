@@ -1,4 +1,4 @@
-import { SET_TWEETS, LIKE_TWEET, LOADING_DATA, DISLIKE_TWEET, DELETE_TWEET } from '../types';
+import { SET_TWEETS, LIKE_TWEET, LOADING_DATA, DISLIKE_TWEET, DELETE_TWEET, POST_TWEET } from '../types';
 
 const initialState = {
     tweets: [],
@@ -14,6 +14,7 @@ export default function(state = initialState, action){
                 loading: true
             }
         case SET_TWEETS:
+            
             return {
                 ...state,
                 tweets: action.payload,
@@ -37,7 +38,34 @@ export default function(state = initialState, action){
             state.tweets.splice(index, 1);
             return {
                 ...state
+            };
+        case POST_TWEET:
+            let  keysMap = { 
+                commentCount: 'commentCount', 
+                content: 'tweetContent', 
+                createdAt: 'createdAt', 
+                handle: 'tweetHandle', 
+                imageUrl: 'userImage', 
+                likeCount: 'likeCount',
+                tweetId: 'tweetId',
             }
+            const renameKeys = (keysMap, obj) =>
+            Object.keys(obj).reduce(
+              (acc, key) => ({
+                ...acc,
+                ...{ [keysMap[key] || key]: obj[key] }
+              }),
+              {}
+            );
+            let newKeyPayload = renameKeys(keysMap, action.payload)
+            return {
+                ...state,
+                tweets: [
+                    newKeyPayload,
+                    ...state.tweets
+                ]
+            };
+
          default:
             return state;
     }

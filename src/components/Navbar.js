@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NecessaryButtons from '../util/NecessaryButtons';
+import PostTweet from './PostTweet';
 // importing Material UI components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -47,9 +48,7 @@ class Navbar extends Component {
 					 {authenticated ? 
 					 (
 						<>
-						<NecessaryButtons tip="Post a tweet!">
-							<AddIcon />
-						</NecessaryButtons>
+						<PostTweet />
 						<Link to="/">
 						<NecessaryButtons tip="Home">
 							<HomeIcon />
