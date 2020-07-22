@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NecessaryButtons from '../util/NecessaryButtons';
 import DeleteTweet from './DeleteTweet';
+import TweetDialog from './TweetDialog';
 // redux
 import { likeTweet, dislikeTweet } from '../redux/actions/dataActions';
 // Icons
@@ -100,6 +101,7 @@ class Tweet extends Component {
                     <ChatIcon color="primary" />
                   </NecessaryButtons>
                   <span>{commentCount} comments</span>
+                  <TweetDialog tweetId={tweetId} tweetHandle={tweetHandle}/>
 								</CardContent>
 							</Card>
             </div>

@@ -1,4 +1,5 @@
-import { SET_TWEETS, DELETE_TWEET, LOADING_DATA, LIKE_TWEET, DISLIKE_TWEET, LOADING_UI, SET_ERRORS, CLEAR_ERRORS, POST_TWEET } from '../types';
+import { SET_TWEETS, DELETE_TWEET, LOADING_DATA, LIKE_TWEET, DISLIKE_TWEET, LOADING_UI, 
+            SET_ERRORS, CLEAR_ERRORS, POST_TWEET, SET_TWEET, STOP_LOADING_UI } from '../types';
 import axios from 'axios';
 
 // get tweets
@@ -16,7 +17,23 @@ export const getTweets = () => dispatch => {
                 type: SET_TWEETS,
                 payload: [],
             });
+        });
+}
+
+// Get a tweet
+export const getTweet = (tweetId) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios.get(`/tweet/${tweetId}`)
+        .then(res => {
+            dispatch({
+                type: SET_TWEET,
+                payload: res.data,
+            });
+            dispatch({
+                type: STOP_LOADING_UI,
+            });
         })
+        .catch(err => console.log(err));
 }
 
 // Post a Tweet

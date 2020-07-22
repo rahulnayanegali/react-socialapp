@@ -1,4 +1,4 @@
-import { SET_TWEETS, LIKE_TWEET, LOADING_DATA, DISLIKE_TWEET, DELETE_TWEET, POST_TWEET } from '../types';
+import { SET_TWEETS, LIKE_TWEET, LOADING_DATA, DISLIKE_TWEET, DELETE_TWEET, POST_TWEET, SET_TWEET } from '../types';
 
 const initialState = {
     tweets: [],
@@ -7,6 +7,23 @@ const initialState = {
 };
 
 export default function(state = initialState, action){
+    let  keysMap = { 
+        commentCount: 'commentCount', 
+        content: 'tweetContent', 
+        createdAt: 'createdAt', 
+        handle: 'tweetHandle', 
+        imageUrl: 'userImage', 
+        likeCount: 'likeCount',
+        tweetId: 'tweetId',
+    }
+    const renameKeys = (keysMap, obj) =>
+    Object.keys(obj).reduce(
+      (acc, key) => ({
+        ...acc,
+        ...{ [keysMap[key] || key]: obj[key] }
+      }),
+      {}
+    );
     switch(action.type){
         case LOADING_DATA:
             return {
@@ -14,11 +31,16 @@ export default function(state = initialState, action){
                 loading: true
             }
         case SET_TWEETS:
-            
             return {
                 ...state,
                 tweets: action.payload,
                 loading: false
+            }
+        case SET_TWEET:
+            let newSetTweetPayload = renameKeys(keysMap, action.payload)
+            return {
+                ...state,
+                tweet: newSetTweetPayload,
             }
         case LIKE_TWEET:
         case DISLIKE_TWEET:
@@ -40,28 +62,11 @@ export default function(state = initialState, action){
                 ...state
             };
         case POST_TWEET:
-            let  keysMap = { 
-                commentCount: 'commentCount', 
-                content: 'tweetContent', 
-                createdAt: 'createdAt', 
-                handle: 'tweetHandle', 
-                imageUrl: 'userImage', 
-                likeCount: 'likeCount',
-                tweetId: 'tweetId',
-            }
-            const renameKeys = (keysMap, obj) =>
-            Object.keys(obj).reduce(
-              (acc, key) => ({
-                ...acc,
-                ...{ [keysMap[key] || key]: obj[key] }
-              }),
-              {}
-            );
-            let newKeyPayload = renameKeys(keysMap, action.payload)
+            let newPostPayload = renameKeys(keysMap, action.payload)
             return {
                 ...state,
                 tweets: [
-                    newKeyPayload,
+                    newPostPayload,
                     ...state.tweets
                 ]
             };
