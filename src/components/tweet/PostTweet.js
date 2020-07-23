@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import NecessaryButtons from '../util/NecessaryButtons';
+import NecessaryButtons from '../../util/NecessaryButtons';
 
 // mui
 import TextField from '@material-ui/core/TextField';
@@ -15,7 +15,7 @@ import DialogContent  from '@material-ui/core/DialogContent';
 
 // redux
 import { connect } from 'react-redux';
-import { postTweet, clearErrors } from '../redux/actions/dataActions';
+import { postTweet, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
    ...theme.spreadIt,

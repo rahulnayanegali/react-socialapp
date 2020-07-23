@@ -1,30 +1,28 @@
 import React, { Component, Fragment } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import NecessaryButtons from '../util/NecessaryButtons';
+import NecessaryButtons from '../../util/NecessaryButtons';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
-
+import LikeButton from './LikeButton';
+import Comments from './Comments';
 //mui
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogContent  from '@material-ui/core/DialogContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
+import ChatIcon from '@material-ui/icons/Chat';
 import Unfoldmore from '@material-ui/icons/UnfoldMore';
 // redux
 import { connect } from 'react-redux';
-import { getTweet } from '../redux/actions/dataActions';
+import { getTweet } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
     ...theme.spreadIt,
-    invisibleSeperator: {
-        border: 'none',
-        margin: 4
-    } ,
+    
     tweetDialogContent: {
         // maxWidth: '90%',
         padding: 20,
@@ -47,7 +45,7 @@ const styles = theme => ({
     spinnerDiv: {
         textAlign: 'center',
         marginTop: 50,
-        marginTop: 50
+        marginBottom: 50
     }
 
 })
@@ -99,20 +97,18 @@ class TweetDialog extends Component {
                         </Typography>
                         <hr className={classes.invisibleSeparator} />
                         <Typography variant="body1">{tweetContent}</Typography>
-                        {/* <LikeButton screamId={screamId} /> */}
-                        {/* <span>{likeCount} likes</span>
-                        <NecessaryButtons tip="comments">
-                            <ChatIcon color="primary" />
-                        </NecessaryButtons>
-                        <span>{commentCount} comments</span> */}
+                        <hr className={classes.invisibleSeparator} />
+								<LikeButton tweetId={tweetId}/>
+								<span>{likeCount} Likes</span>
+								<NecessaryButtons tip="comments">
+                    <ChatIcon color="primary" />
+                  </NecessaryButtons>
+                  <span>{commentCount} comments</span>
                 </Grid>
-                {/* <hr className={classes.visibleSeparator} />
-                <CommentForm screamId={screamId} />
-                <Comments comments={comments} /> */}
-               
+                <hr className={classes.visibleSeparator} />
+                <Comments comments={comments}/>
             </Grid>
         )
-
         return (
             <Fragment>
                 <NecessaryButtons onClick={this.handleOpen} tip="expand tweet" tipClassName={classes.expandButton}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid';
-import Tweet from '../components/Tweet';
-import Profile from '../components/Profile';
+import Tweet from '../components/tweet/Tweet';
+import Profile from '../components/profile/Profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTweets } from '../redux/actions/dataActions';

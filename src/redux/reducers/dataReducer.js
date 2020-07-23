@@ -44,13 +44,15 @@ export default function(state = initialState, action){
             }
         case LIKE_TWEET:
         case DISLIKE_TWEET:
+            let newTweetPayload = renameKeys(keysMap, action.payload)
             let index1 = state.tweets.findIndex((tweet) => tweet.tweetId === action.payload.tweetId);
-            // console.log(state.tweets[index]);
-            state.tweets[index1].likeCount = action.payload.likeCount;
+            // console.log(action.payload);
+            // state.tweets[index1].likeCount = action.payload.likeCount;
+            state.tweets[index1] = newTweetPayload;
 
             if(state.tweet.tweetId === action.payload.tweetId) {
                 // console.log('Like/Dislike')
-                state.tweet = action.payload;
+                state.tweet = newTweetPayload;
             }
             return {
                 ...state,

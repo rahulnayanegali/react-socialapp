@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import NecessaryButtons from '../util/NecessaryButtons';
-import PostTweet from './PostTweet';
+import NecessaryButtons from '../../util/NecessaryButtons';
+import PostTweet from '../tweet/PostTweet';
 // importing Material UI components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,10 +10,9 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import MuiSwitch from '@material-ui/core/Switch';
 // Redux 
-import {changedarkMode} from '../redux/actions/userActions';
+import {changedarkMode} from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 // Icons
-import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 import Notifications from '@material-ui/icons/Notifications';
 
