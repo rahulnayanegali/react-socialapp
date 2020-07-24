@@ -48,7 +48,6 @@ export const postTweet = (newTweet) => (dispatch) => {
             dispatch(clearErrors());
         })
         .catch((err) => {
-            console.log(err.response)
             dispatch({
                 type: SET_ERRORS,
                 payload: err.response.data
@@ -110,6 +109,22 @@ export const deleteTweet = (tweetId) => (dispatch) => {
         })
         .catch(err => console.log(err));
 }
+export const getUserData = (tweetHandle) => (dispatch) => {
+   dispatch({ type: LOADING_DATA });
+   axios.get(`/user/${tweetHandle}`)
+      .then( res => {
+         dispatch({
+            type: SET_TWEETS,
+            payload: res.data.tweets,
+         });
+      })
+      .catch( () => {
+         dispatch({
+            type: SET_TWEETS,
+            payload: null,
+         })
+      });      
+};
 // clear erros.
 export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });

@@ -31,9 +31,11 @@ export default function(state = initialState, action){
                 loading: true
             }
         case SET_TWEETS:
+            let newTweets = action.payload;
+            newTweets = newTweets.map((tweet) => renameKeys(keysMap, tweet))
             return {
                 ...state,
-                tweets: action.payload,
+                tweets: newTweets,
                 loading: false
             }
         case SET_TWEET:

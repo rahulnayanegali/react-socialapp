@@ -48,32 +48,44 @@ const styles = theme => ({
         marginTop: 50,
         marginBottom: 50
     }
-
 })
 class TweetDialog extends Component {
     state = {
         open: false,
+        oldPath:'',
+        newPath:'',
+    }
+    componentDidMount() {
+        if(this.props.openDialog){
+            this.handleOpen();
+        }  
     }
     handleOpen = () => {
-        this.setState({ open: true});
+        let oldPath = window.location.pathname;
+        const { tweetHandle, tweetId } = this.props;
+        const newPath = `/users/${tweetHandle}/tweet/${tweetId}`;
+        window.history.pushState(null, null, newPath);
+        this.setState({ open: true, oldPath, newPath,});
         this.props.getTweet(this.props.tweetId);
     }
     handleClose = () => {
+        window.history.pushState(null, null, this.state.oldPath);
         this.setState({ open: false });
         this.props.clearErrors();
     }
     render() {
         const { classes, tweet: { 
-            tweetContent,
-            createdAt,
-            commentCount,
-            userImage,
-            tweetHandle,
-            comments},
-            UI: { loading },
-            tweetId,
-            tweetLikeCount
-        } = this.props
+                tweetContent,
+                createdAt,
+                commentCount,
+                userImage,
+                tweetHandle,
+                comments
+                },
+                UI: { loading },
+                tweetId,
+                tweetLikeCount
+            } = this.props
         
         const dialogMarkup = loading ? (
             <div className={classes.spinnerDiv}>

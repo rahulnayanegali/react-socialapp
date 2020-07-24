@@ -33,14 +33,13 @@ const styles = {
 }
 
 class Tweet extends Component {
-  
     render() {
       const { 
         classes, 
         tweet: { tweetId, tweetHandle, tweetContent, createdAt, userImage, likeCount, commentCount},
         user: {
           authenticated, credentials: { handle }
-        }
+        },
       } = this.props;
       
       const deleteButton = authenticated && tweetHandle === handle ? (
@@ -67,10 +66,14 @@ class Tweet extends Component {
                   <LikeButton tweetId={tweetId}/>
                   <span>{likeCount} Likes</span>
                   <NecessaryButtons tip="comments" >
-                    <ChatIcon color="primary" onClick={console.log('Comments')}/>
+                    <ChatIcon color="primary" />
                   </NecessaryButtons>
                   <span>{commentCount} comments</span>
-                  <TweetDialog tweetId={tweetId} tweetHandle={tweetHandle} tweetLikeCount={likeCount}/>
+                  <TweetDialog 
+                    tweetId={tweetId} 
+                    tweetHandle={tweetHandle} 
+                    tweetLikeCount={likeCount}
+                    openDialog={this.props.openDialog}/>
 								</CardContent>
 							</Card>
             </div>
@@ -83,6 +86,7 @@ Tweet.propTypes = {
   data: PropTypes.object.isRequired,
   tweet: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.object,
 }
 
 const mapStateToProps = state => ({
