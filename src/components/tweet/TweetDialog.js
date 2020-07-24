@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 //mui
 import Dialog from '@material-ui/core/Dialog';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -18,7 +19,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import Unfoldmore from '@material-ui/icons/UnfoldMore';
 // redux
 import { connect } from 'react-redux';
-import { getTweet } from '../../redux/actions/dataActions';
+import { getTweet, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
     ...theme.spreadIt,
@@ -59,24 +60,25 @@ class TweetDialog extends Component {
     }
     handleClose = () => {
         this.setState({ open: false });
+        this.props.clearErrors();
     }
     render() {
-        const { classes, tweet: { tweetId,
+        const { classes, tweet: { 
             tweetContent,
             createdAt,
-            likeCount,
             commentCount,
             userImage,
             tweetHandle,
             comments},
-            UI: { loading }
+            UI: { loading },
+            tweetId,
+            tweetLikeCount
         } = this.props
         
         const dialogMarkup = loading ? (
             <div className={classes.spinnerDiv}>
                 <CircularProgress size={100}  />
             </div>
-            
         ) : ( 
             <Grid container spacing={0} >
                 <Grid item sm={5}>
@@ -90,22 +92,23 @@ class TweetDialog extends Component {
                         to={`/users/${tweetHandle}`}
                         >
                             @{tweetHandle}
-                        </Typography>
-                        <hr className={classes.invisibleSeperator} />
-                        <Typography variant="body2" color="textSecondary">
-                            {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-                        </Typography>
-                        <hr className={classes.invisibleSeparator} />
-                        <Typography variant="body1">{tweetContent}</Typography>
-                        <hr className={classes.invisibleSeparator} />
-								<LikeButton tweetId={tweetId}/>
-								<span>{likeCount} Likes</span>
-								<NecessaryButtons tip="comments">
-                    <ChatIcon color="primary" />
-                  </NecessaryButtons>
-                  <span>{commentCount} comments</span>
+                    </Typography>
+                    <hr className={classes.invisibleSeperator} />
+                    <Typography variant="body2" color="textSecondary">
+                        {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+                    </Typography>
+                    <hr className={classes.invisibleSeparator} />
+                    <Typography variant="body1">{tweetContent}</Typography>
+                    <hr className={classes.invisibleSeparator} />
+                    <LikeButton tweetId={tweetId}/>
+                    <span>{tweetLikeCount} Likes</span>
+                    <NecessaryButtons tip="comments">
+                        <ChatIcon color="primary" />
+                    </NecessaryButtons>
+                    <span>{commentCount} comments</span>
                 </Grid>
                 <hr className={classes.visibleSeparator} />
+                <CommentForm tweetId={tweetId} />
                 <Comments comments={comments}/>
             </Grid>
         )
@@ -137,6 +140,7 @@ TweetDialog.propTypes = {
     tweetHandle: PropTypes.string.isRequired, 
     tweet: PropTypes.object.isRequired,
     UI: PropTypes.object.isRequired,
+    clearErrors: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -147,5 +151,6 @@ const mapStateToProps = state => ({
 
 const mapActionToProps = {
     getTweet,
+    clearErrors
 }
 export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(TweetDialog));

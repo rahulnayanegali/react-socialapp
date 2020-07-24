@@ -66,11 +66,11 @@ class Tweet extends Component {
 									<Typography variant="body1">{tweetContent}</Typography>
                   <LikeButton tweetId={tweetId}/>
                   <span>{likeCount} Likes</span>
-                  <NecessaryButtons tip="comments">
-                    <ChatIcon color="primary" />
+                  <NecessaryButtons tip="comments" >
+                    <ChatIcon color="primary" onClick={console.log('Comments')}/>
                   </NecessaryButtons>
                   <span>{commentCount} comments</span>
-                  <TweetDialog tweetId={tweetId} tweetHandle={tweetHandle}/>
+                  <TweetDialog tweetId={tweetId} tweetHandle={tweetHandle} tweetLikeCount={likeCount}/>
 								</CardContent>
 							</Card>
             </div>

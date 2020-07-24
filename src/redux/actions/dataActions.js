@@ -1,5 +1,5 @@
 import { SET_TWEETS, DELETE_TWEET, LOADING_DATA, LIKE_TWEET, DISLIKE_TWEET, LOADING_UI, 
-            SET_ERRORS, CLEAR_ERRORS, POST_TWEET, SET_TWEET, STOP_LOADING_UI } from '../types';
+            SET_ERRORS, CLEAR_ERRORS, POST_TWEET, SET_TWEET, STOP_LOADING_UI,SUBMIT_COMMENT } from '../types';
 import axios from 'axios';
 
 // get tweets
@@ -64,6 +64,7 @@ export const likeTweet = (tweetId) => dispatch => {
                 type: LIKE_TWEET,
                 payload: {...res.data,tweetId}
             })
+            // getTweet(tweetId);
         })
         .catch(err => console.log(err));
 };
@@ -76,10 +77,28 @@ export const dislikeTweet = (tweetId) => dispatch => {
                 type: DISLIKE_TWEET,
                 payload: {...res.data,tweetId}
             })
+            // getTweet(tweetId);
         })
         .catch(err => console.log(err));
 };
 
+// SUBMIT comment
+export const submitComment = (tweetId, commentData) => (dispatch) => {
+    axios.post(`/tweet/${tweetId}/comment`, commentData)
+        .then(res => {
+            dispatch({
+                type: SUBMIT_COMMENT,
+                payload: res.data,
+            });
+            dispatch(clearErrors());
+        })
+        .catch( err => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data,
+            });
+        });
+};
 // Delete Tweet
 export const deleteTweet = (tweetId) => (dispatch) => {
     axios.delete(`/tweet/${tweetId}`)

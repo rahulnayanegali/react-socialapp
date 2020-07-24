@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 // redux
 import { connect } from 'react-redux';
-import { likeTweet, dislikeTweet } from '../../redux/actions/dataActions';
+import { likeTweet, dislikeTweet, getTweet } from '../../redux/actions/dataActions';
 
 
 export class LikeButton extends Component {
@@ -64,5 +64,6 @@ const mapStateToProps = (state) => ({
 const mapActionsToProps =  {
     likeTweet,
     dislikeTweet,
+    getTweet
   }
 export default connect(mapStateToProps, mapActionsToProps)(LikeButton);
