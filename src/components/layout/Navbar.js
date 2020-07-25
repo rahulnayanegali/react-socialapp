@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NecessaryButtons from '../../util/NecessaryButtons';
 import PostTweet from '../tweet/PostTweet';
+import Notifications from './Notifications.js'
 // importing Material UI components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +15,6 @@ import {changedarkMode} from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
-import Notifications from '@material-ui/icons/Notifications';
 
 class Navbar extends Component {
    constructor() {
@@ -53,9 +53,7 @@ class Navbar extends Component {
 							<HomeIcon />
 						</NecessaryButtons>
 						</Link>
-						<NecessaryButtons tip="Notifications">
 							<Notifications />
-						</NecessaryButtons>
 						
 						</> 
 					 ) : (

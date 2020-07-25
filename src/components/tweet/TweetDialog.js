@@ -64,6 +64,7 @@ class TweetDialog extends Component {
         let oldPath = window.location.pathname;
         const { tweetHandle, tweetId } = this.props;
         const newPath = `/users/${tweetHandle}/tweet/${tweetId}`;
+        if(oldPath === newPath) oldPath = `/users/${tweetHandle}`;
         window.history.pushState(null, null, newPath);
         this.setState({ open: true, oldPath, newPath,});
         this.props.getTweet(this.props.tweetId);
