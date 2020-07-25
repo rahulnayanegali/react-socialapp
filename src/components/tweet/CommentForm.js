@@ -66,7 +66,7 @@ class CommentForm extends Component {
 }
 
 CommentForm.propTypes = {
-    submitCommit: PropTypes.func.isRequired,
+    submitComment: PropTypes.func.isRequired,
     tweetId: PropTypes.string.isRequired,
     UI: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,

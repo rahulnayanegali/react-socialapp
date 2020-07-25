@@ -10,7 +10,7 @@ export default {
         },
       secondary: {
         light: '#ffffff',
-        main: '#ba1a3f',
+        main: '#f44336',
         dark: '#babfa1',
         contrastText: '#fff',
       },
