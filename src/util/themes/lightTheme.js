@@ -71,7 +71,7 @@ export default {
       '& .profile-details': {
       textAlign: 'center',
       '& span, svg': {
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
       },
       '& a': {
         color: '#00bcd4'

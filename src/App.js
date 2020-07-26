@@ -24,6 +24,7 @@ import signup from './pages/signup';
 import user from './pages/user';
 // import { AppBar } from '@material-ui/core';
 
+// axios.defaults.baseURL = 'https://asia-east2-twitter-ee105.cloudfunctions.net/api';
 
 const token = localStorage.FBIToken;
 if(token) {

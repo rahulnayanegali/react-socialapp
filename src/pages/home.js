@@ -5,6 +5,7 @@ import Profile from '../components/profile/Profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTweets } from '../redux/actions/dataActions';
+import TweetSkeleton from '../util/TweetSkeleton';
 class home extends Component {
   // state = {
   //   tweets: null,
@@ -22,7 +23,7 @@ class home extends Component {
     let redentTweetsMarkup = !loading ? (
     tweets.map(tweet => <Tweet tweet={tweet} key={tweet.tweetId} />)
     ) : (
-      <p>Loading...</p>
+      <TweetSkeleton />
     )
 		return (
 			<Grid container spacing={10}>
