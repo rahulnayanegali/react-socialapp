@@ -26,7 +26,7 @@ const styles = (theme) => ({
       iconSkelton: {
         display: '-webkit-inline-box',
         height: 20,
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.light,
         width: '80%',
         margin: '0 auto 7px auto'
       },
