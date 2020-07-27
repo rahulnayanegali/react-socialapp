@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 // import AppIcon from '../images/titleicon.svg';
-import LoginImage from '../images/twitter_login_sidebar_illustration.png'
+import LoginImage from '../images/Twitter_Logo_Blue.svg'
 import { Link } from 'react-router-dom';
 
 // Importing material ui
@@ -69,12 +69,18 @@ class login extends Component {
 		const { errors } = this.state;
 
 		return (
-			<Grid container className={classes.form} alignItems="stretch">
-				<Grid item sm/>
-				<Grid item sm>
+			<Grid container className={classes.form} spacing={10} style={{justifyContent: 'center'}} >
+				{/* <Grid item sm md lg/> */}
+				<Grid item xs={10} sm={6} md={4} lg={4}  style={{ maxHeight: '60vh'}}>
+				{/* <Typography variant='h5' className={classes.pageTitle} >
+				Log in to Twitter
+					</Typography> */}
 					<img src={LoginImage} height='30%' width='auto' className={classes.image} alt="LoginIcon" />
+					{/* <Typography variant='h5' className={classes.pageTitle} >
+						See what’s happening in the world right now
+					</Typography> */}
 					<Typography variant='h5' className={classes.pageTitle} >
-               See what’s happening in the world right now
+                  Log in to Twitter
 					</Typography>
 					<form noValidate onSubmit={this.handleSubmit}>
 						<TextField 
@@ -116,7 +122,7 @@ class login extends Component {
 							className={classes.button}
 							disabled={loading}
 						>
-							Login
+							Log in
 							{loading && 
 								<CircularProgress size={30} className={classes.progress} />
 							}
@@ -125,7 +131,7 @@ class login extends Component {
 						<small>dont have an account ? sign up <Link to="/signup">here</Link></small>
 					</form>
 				</Grid>
-				<Grid item sm/>
+				{/* <Grid item sm md lg/> */}
 			</Grid>
 		);
 	};

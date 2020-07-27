@@ -15,13 +15,29 @@ export default {
         contrastText: '#fff',
       },
   },
+  
   typography: {
-    useNextVariants: true,																																																																																																																												
+    useNextVariants: true,	
+    fontFamily: [
+      '"Ubuntu"',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),																																																																																																																											
   },
+  
   spreadIt: {
   form: {
       textAlign: 'center',
     },
+    
     image: {
       margin: '20px auto auto auto'
     },
@@ -36,9 +52,10 @@ export default {
     },
     button: {
       marginTop: 20,
-    position: 'relative',
+      position: 'relative',
     // borderRadius: '30%',
-    width: '100%'
+      width: '100%',
+      textTransform:'capitalize',
     },
     customError: {
       color: 'red',
