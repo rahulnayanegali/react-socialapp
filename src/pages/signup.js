@@ -57,7 +57,7 @@ class signup extends Component {
 		return (
 			<Grid container className={classes.form} spacing={10} style={{justifyContent: 'center'}}>
 				{/* <Grid item sm/> */}
-				<Grid item xs={10} sm={6} md={4} lg={4}  style={{ maxHeight: '60vh'}}>
+				<Grid item xs={10} sm={6} md={4} lg={4}  style={{ maxHeight: '60vh',  padding: '30px'}}>
 					<img src={SignUpIcon} height='100px' width='auto' className={classes.image} alt="LoginIcon" />
 					<Typography variant='h4' className={classes.pageTitle}>
 						Create your account

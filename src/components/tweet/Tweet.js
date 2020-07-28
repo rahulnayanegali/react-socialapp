@@ -21,14 +21,25 @@ const styles = {
 		card: {
       position: 'relative',
       display: 'flex',
-      marginBottom: 20,
+      // marginBottom: 20,
+      // padding: 30,
+      margin:10,
     },
     content: {
-      padding: 25,
+      // padding: 25,
       objectFit: 'cover'
     },
     image: {
-      minWidth: 200,
+      minWidth: 50,
+      minHeight: 50,
+      borderRadius: 30,
+      // maxWidth: 200,
+      // maxHeight: 200,
+    },
+    divMedia: {
+      paddingTop: 20,
+      paddingLeft: 25,
+      
     }
 }
 
@@ -47,11 +58,14 @@ class Tweet extends Component {
       ) : null
         return (
             <div>
+              {console.log(userImage)}
 							<Card className={classes.card}> 
-                <CardMedia 
+              <div className={classes.divMedia}>
+              <CardMedia 
                 className={classes.image}
 								image={userImage}
 								title="Profile Image" />
+              </div>
 								<CardContent className={classes.content}>
                   <Typography 
                   variant="h5" 
@@ -62,7 +76,7 @@ class Tweet extends Component {
                   </Typography>
                   {deleteButton}
 									<Typography variant="body2" color="textSecondary">{createdAt}</Typography>
-									<Typography variant="body1">{tweetContent}</Typography>
+									<Typography variant="body2" alignCenter>{tweetContent}</Typography>
                   <LikeButton tweetId={tweetId}/>
                   <span>{likeCount} Likes</span>
                   <NecessaryButtons tip="comments" >

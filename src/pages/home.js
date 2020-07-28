@@ -26,9 +26,10 @@ class home extends Component {
       <TweetSkeleton />
     )
 		return (
-			<Grid container spacing={10}>
+			<Grid container spacing={10} >
 				<Grid item sm={8} xs={12}>
-					{/* <p>Content</p> */}
+        {/* <Grid item xs={12} sm={6} md={4} lg={4} > */}
+        
           {redentTweetsMarkup}
 				</Grid>
         <Grid item sm={4} xs={12}>

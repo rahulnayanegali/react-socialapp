@@ -69,9 +69,9 @@ class login extends Component {
 		const { errors } = this.state;
 
 		return (
-			<Grid container className={classes.form} spacing={10} style={{justifyContent: 'center'}} >
+			<Grid container className={classes.form} spacing={0} style={{justifyContent: 'center'}} >
 				{/* <Grid item sm md lg/> */}
-				<Grid item xs={10} sm={6} md={4} lg={4}  style={{ maxHeight: '60vh'}}>
+				<Grid item xs={12} sm={6} md={4} lg={4}  style={{ maxHeight: '60vh', padding: '30px'}}>
 				{/* <Typography variant='h5' className={classes.pageTitle} >
 				Log in to Twitter
 					</Typography> */}
