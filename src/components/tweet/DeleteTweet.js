@@ -53,7 +53,7 @@ class DeleteTweet extends Component {
                         maxWidth="sm"
                         >
                             <DialogTitle>
-                                Are you sure you want to delete this scream ?
+                                Are you sure you want to delete this tweet ?
                             </DialogTitle>
                             <DialogActions>
                               <Button onClick={this.handleClose}>

@@ -58,7 +58,6 @@ class Tweet extends Component {
       ) : null
         return (
             <div>
-              {console.log(userImage)}
 							<Card className={classes.card}> 
               <div className={classes.divMedia}>
               <CardMedia 
