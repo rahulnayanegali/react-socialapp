@@ -16,7 +16,7 @@ import { deleteTweet } from '../../redux/actions/dataActions';
 
 const styles = {
    deleteButton:{ 
-   position: 'absolute',
+   position: 'sticky',
    left: '90%',
    top: '10%',
 }

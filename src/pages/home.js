@@ -6,6 +6,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTweets } from '../redux/actions/dataActions';
 import TweetSkeleton from '../util/TweetSkeleton';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Navbar from '../components/layout/Navbar'
+const style = theme => ({
+  [theme.breakpoints.up('md')]: {
+    backgroundColor: 'red',
+  }
+})
+
 class home extends Component {
   // state = {
   //   tweets: null,
@@ -26,22 +34,24 @@ class home extends Component {
       <TweetSkeleton />
     )
 		return (
-			<Grid container spacing={10} >
-				<Grid item sm={8} xs={12}>
+			<Grid container justify="space-evenly" >
+       {/* <Grid item sm={false} xs={false} md={2}>
+         <Navbar />
+       </Grid> */}
+				<Grid item direction={"column"} xs={12} sm={8} md={5} lg={5}  >
         {/* <Grid item xs={12} sm={6} md={4} lg={4} > */}
-        
           {redentTweetsMarkup}
 				</Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item xs={12} sm={10} md={3}>
 					<Profile/>
 				</Grid>
 			</Grid>
 		);
 	}
 }
-
 home.propTypes = {
   getTweets: PropTypes.func.isRequired,
+	classes: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 }
@@ -49,4 +59,4 @@ const mapStateToProps = state => ({
   data: state.data,
   user: state.user,
 });
-export default connect(mapStateToProps, { getTweets })(home);
+export default connect(mapStateToProps, { getTweets })(withStyles(style)(home));

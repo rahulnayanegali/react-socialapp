@@ -6,11 +6,14 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 //mui stuff
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Badge from '@material-ui/core/Badge';
 //icons
+// import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -46,13 +49,18 @@ class Notifications extends Component {
                     ? (notificationsIcon = ( 
                         <Badge badgeContent={notifications.filter(notification => notification.read === false).length}
                             color="secondary">
-                                 <NotificationsIcon/>
+                                 <NotificationsIcon color="primary" fontSize="large"/>
+                                 {/* <Button variant="contained" color="primary">Tweet </Button> */}
                         </Badge>
                      )) : (
-                        notificationsIcon = <NotificationsIcon /> 
+                        notificationsIcon = 
+                        <NotificationsIcon  color="primary" fontSize="large"/> 
+                        // <Button variant="contained" color="primary">Tweet </Button>
                     )
         } else {
-            notificationsIcon = <NotificationsIcon /> 
+            notificationsIcon = 
+            <NotificationsIcon color="primary" fontSize="large" /> 
+            // <Button variant="contained" color="primary">Tweet </Button>
         }
         let notificationsMarkup = 
             notifications && notifications.length > 0 ? (

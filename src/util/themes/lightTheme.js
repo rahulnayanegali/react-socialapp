@@ -14,8 +14,19 @@ export default {
         dark: '#babfa1',
         contrastText: '#fff',
       },
+      textSecondary: {
+        main: '#657786',
+      },
   },
-  
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 750,
+      md: 960,
+      lg: 1280,
+      xl: 1400,
+    },
+  },
   typography: {
     useNextVariants: true,	
     fontFamily: [
@@ -32,7 +43,6 @@ export default {
       '"Segoe UI Symbol"',
     ].join(','),																																																																																																																											
   },
-  
   spreadIt: {
   form: {
       textAlign: 'center',

@@ -40,8 +40,8 @@ const styles = theme => ({
         
     },
     expandButton: {
-        position: 'absolute',
-        left: '90% ',
+        position: 'relative',
+        // left: '90% ',
     },
     spinnerDiv: {
         textAlign: 'center',
@@ -93,7 +93,7 @@ class TweetDialog extends Component {
                 <CircularProgress size={100}  />
             </div>
         ) : ( 
-            <Grid container spacing={0} >
+            <Grid container >
                 <Grid item sm={5}>
                     <img src={userImage} alt="Profile" className={classes.profileImage} />
                 </Grid>

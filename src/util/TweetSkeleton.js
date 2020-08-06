@@ -12,6 +12,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
      card: {
          display: 'flex',
          marginBottom: 20,
+         maxWidth: '75%',
      },
      cardContent: {
          width: '100%',
@@ -23,14 +24,22 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
         },
      cover: {
-         minWidth: 200,
+        //  minWidth: 200,
+         width: 50,
+        height: 50,
+        marginTop: '1em',
+        marginLeft: '1em',
+        marginBottom: 0,
+        marginRight: '1em',
+        borderRadius: 30,
          objectFit: 'cover'
      },
      handle: {
          width: 60,
          height: 20,
          backgroundColor: theme.palette.primary.main,
-         marginBottom: 7 
+         marginBottom: 7 ,
+         marginRight: '1em',
      },
      date: {
         height: 14,
@@ -49,7 +58,12 @@ import withStyles from '@material-ui/core/styles/withStyles';
         width: '50%',
         backgroundColor: 'rgba(0,0,0, 0.4)',
         marginBottom: 10
-      }
+      },
+      head: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+      },
  });
 
  const TweetSkeleton = (props) => {
@@ -59,8 +73,10 @@ import withStyles from '@material-ui/core/styles/withStyles';
              <CardMedia className={classes.cover} image={TweetSkeletonImage}/>
              <CardContent 
              className={classes.cardContent}>
+                 <div className={classes.head}> 
                  <div className={classes.handle}/>
                  <div className={classes.date}/>
+                 </div>
                  <div className={classes.fullBlock}/>
                  <div className={classes.fullBlock}/>
                  <div className={classes.halfBlock}/>

@@ -1,97 +1,101 @@
-import React, { Component } from 'react'
-import withStyles from '@material-ui/core/styles/withStyles';
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import NecessaryButtons from '../../util/NecessaryButtons';
-import DeleteTweet from './DeleteTweet';
-import TweetDialog from './TweetDialog';
-import LikeButton from './LikeButton';
-// redux
-// Icons
-import ChatIcon from '@material-ui/icons/Chat';
-// mui imports
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import DeleteTweet from './DeleteTweet';
+import { Link } from 'react-router-dom';
+import NecessaryButtons from '../../util/NecessaryButtons';
+import TweetDialog from './TweetDialog';
+import LikeButton from './LikeButton';
+import ChatIcon from '@material-ui/icons/Chat';
+import dayjs from 'dayjs';
 
 
-const styles = {
-		card: {
-      position: 'relative',
-      display: 'flex',
-      // marginBottom: 20,
-      // padding: 30,
-      margin:10,
+const useStyles = makeStyles({
+  root: {
+    // maxWidth: 345,
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1em',
+    // maxWidth: 'inherit',
+  },
+  head: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  handle: {
+    marginTop: '1em' ,
+    textTransform: 'capitalize',
+  },
+
+  media: {
+    width: 50,
+    height: 50,
+    marginTop: '1em',
+    marginLeft: '1em',
+    marginBottom: 0,
+    marginRight: '1em',
+    borderRadius: 30,
+
+  },
+});
+
+ function Tweet(props) {
+  const classes = useStyles();
+  const { 
+    tweet: { tweetId, tweetHandle, tweetContent, createdAt, userImage, likeCount, commentCount},
+    user: {
+      authenticated, credentials: { handle }
     },
-    content: {
-      // padding: 25,
-      objectFit: 'cover'
-    },
-    image: {
-      minWidth: 50,
-      minHeight: 50,
-      borderRadius: 30,
-      // maxWidth: 200,
-      // maxHeight: 200,
-    },
-    divMedia: {
-      paddingTop: 20,
-      paddingLeft: 25,
+  } = props;
+  const deleteButton = authenticated && tweetHandle === handle ? (
+    <DeleteTweet tweetId={tweetId} />
+  ) : null
+  return (
+    <Card className={classes.root} >
+      {/* <CardActionArea> */}
+      <div className={classes.head}>
+      <CardMedia
+          className={classes.media}
+          image={userImage}
+          title="User Image"
+        />
+        <Typography className={classes.handle} alignRight  variant="h5" component="h2" >
+          {tweetHandle} <Typography variant="overline" >{dayjs(createdAt).format('MMM DD,  YYYY')}</Typography >
+          </Typography>
+          {deleteButton}
+									{/* <Typography variant="body2" color="textSecondary">{createdAt}</Typography> */}
+      </div>
+        <CardContent style={{paddingBottom:0, paddingTop: 8}}>
+          <Typography  variant="body2" color="textSecondary" component="span">
+          {tweetContent}
+          </Typography>
+        </CardContent>
+        <CardActions style={{paddingTop:0}}>
+        <LikeButton tweetId={tweetId}/>
+          <span>{likeCount} Likes</span>
+          <NecessaryButtons tip="comments" >
+            <ChatIcon color="primary" />
+          </NecessaryButtons>
+          <span>{commentCount} comments</span>
+          <TweetDialog 
+            tweetId={tweetId} 
+            tweetHandle={tweetHandle} 
+            tweetLikeCount={likeCount}
+            openDialog={props.openDialog}/>
+      </CardActions>
+      {/* </CardActionArea> */}
       
-    }
-}
-
-class Tweet extends Component {
-    render() {
-      const { 
-        classes, 
-        tweet: { tweetId, tweetHandle, tweetContent, createdAt, userImage, likeCount, commentCount},
-        user: {
-          authenticated, credentials: { handle }
-        },
-      } = this.props;
-      
-      const deleteButton = authenticated && tweetHandle === handle ? (
-        <DeleteTweet tweetId={tweetId} />
-      ) : null
-        return (
-            <div>
-							<Card className={classes.card}> 
-              <div className={classes.divMedia}>
-              <CardMedia 
-                className={classes.image}
-								image={userImage}
-								title="Profile Image" />
-              </div>
-								<CardContent className={classes.content}>
-                  <Typography 
-                  variant="h5" 
-                  component={Link} 
-                  to={`/users/${tweetHandle}`}
-                  color="primary"
-                  >{tweetHandle}
-                  </Typography>
-                  {deleteButton}
-									<Typography variant="body2" color="textSecondary">{createdAt}</Typography>
-									<Typography variant="body2" alignCenter>{tweetContent}</Typography>
-                  <LikeButton tweetId={tweetId}/>
-                  <span>{likeCount} Likes</span>
-                  <NecessaryButtons tip="comments" >
-                    <ChatIcon color="primary" />
-                  </NecessaryButtons>
-                  <span>{commentCount} comments</span>
-                  <TweetDialog 
-                    tweetId={tweetId} 
-                    tweetHandle={tweetHandle} 
-                    tweetLikeCount={likeCount}
-                    openDialog={this.props.openDialog}/>
-								</CardContent>
-							</Card>
-            </div>
-        )
-    }
+    </Card>
+  );
 }
 
 Tweet.propTypes = {
@@ -105,6 +109,6 @@ Tweet.propTypes = {
 const mapStateToProps = state => ({
   user: state.user,
   data: state.data
-})
+});
 
-export default connect(mapStateToProps)(withStyles(styles)(Tweet));
+export default connect(mapStateToProps)(Tweet);

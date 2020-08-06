@@ -13,12 +13,12 @@ import LinkIcon from '@material-ui/icons/Link';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
-	...theme.spreadIt
+   ...theme.spreadIt,
+   
 });
 
 const StaticProfile = (props) => {
     const { classes, profile: { handle, createdAt, imageUrl, bio, website, location}} = props;
-
     return (
         <Paper className={classes.paper}>
             <div className={classes.profile}>

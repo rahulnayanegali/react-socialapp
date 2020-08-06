@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import withStyles from '@material-ui/core/styles/withStyles';
 import './App.css';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-// import PropTypes from 'prop-types';
 import Theme from './util/themes/ThemeProvider';
 
 // Redux
@@ -53,12 +51,12 @@ class App extends Component {
 //    }
 	render() {
 		return (
-				<Provider store={store}> 
-      <Theme>
+		<Provider store={store}> 
+		<Theme>
 				<div className="App">
 					<Router>
 						{/* <Navbar handleDarkMode={this.handleDarkMode}/> */}
-                  <Navbar />
+						<Navbar >
 						<div className="container">
 							<Switch>
 								<Route exact path="/" component={home} />
@@ -68,6 +66,7 @@ class App extends Component {
 								<Route exact path="/users/:handle/tweet/:tweetId" component={user}/>
 							</Switch>	
 						</div>
+						</Navbar>
 					</Router>
 				</div>	
         </Theme>

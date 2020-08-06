@@ -24,7 +24,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 
 const styles = (theme) => ({
-	...theme.spreadIt
+   ...theme.spreadIt,
+   // paper: {
+   //    padding: 20,
+   //    maxWidth: 'max-content',
+   // }
 });
 
 class Profile extends Component {

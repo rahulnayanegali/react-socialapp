@@ -44,12 +44,12 @@ class user extends Component {
 			 })
 		 )
         return (
-			<Grid container spacing={10}>
-				<Grid item sm={8} xs={12}>
+			<Grid container justify="space-evenly">
+				<Grid item  xs={12} sm={8} md={5} lg={5}>
 					{/* <p>Content</p> */}
 					{tweetsMarkup}
 				</Grid>
-				<Grid item sm={4} xs={12}>
+				<Grid item xs={12} sm={10} md={3}>
 					{this.state.profile === null ? (
 						<ProfileSkeleton />
 					): <StaticProfile profile={this.state.profile} />
