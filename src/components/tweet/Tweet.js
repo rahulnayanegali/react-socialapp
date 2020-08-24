@@ -1,16 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DeleteTweet from './DeleteTweet';
-import { Link } from 'react-router-dom';
 import NecessaryButtons from '../../util/NecessaryButtons';
 import TweetDialog from './TweetDialog';
 import LikeButton from './LikeButton';
@@ -68,7 +65,7 @@ const useStyles = makeStyles({
           image={userImage}
           title="User Image"
         />
-        <Typography className={classes.handle} alignRight  variant="h5" component="h2" >
+        <Typography className={classes.handle}   variant="h5" component="h2" >
           {tweetHandle} <Typography variant="overline" >{dayjs(createdAt).format('MMM DD,  YYYY')}</Typography >
           </Typography>
           {deleteButton}
@@ -102,7 +99,7 @@ Tweet.propTypes = {
   user: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   tweet: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
+  // classes: PropTypes.object.isRequired,
   openDialog: PropTypes.object,
 }
 

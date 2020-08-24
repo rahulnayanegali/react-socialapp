@@ -1,18 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import NecessaryButtons from '../../util/NecessaryButtons';
 // mui
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CloseIcon from '@material-ui/icons/Close';
-import AddIcon from '@material-ui/icons/Add';
 import DialogContent  from '@material-ui/core/DialogContent';
-import Fab from '@material-ui/core/Fab';
-import TwitterIcon from '@material-ui/icons/Twitter';
 
 // redux
 import { connect } from 'react-redux';
@@ -48,20 +43,38 @@ class PostTweet extends Component {
         content: '',
         errors: {},
     };
-    componentWillReceiveProps(nextProps){
-       if(nextProps.UI.errors){
-          this.setState({
-             errors:nextProps.UI.errors
-          });
-       }
-       if(!nextProps.UI.errors && !nextProps.UI.loading){
-          this.setState({ 
+    // componentWillReceiveProps(nextProps){
+    //    if(nextProps.UI.errors){
+    //       this.setState({
+    //          errors:nextProps.UI.errors
+    //       });
+    //    }
+    //    if(!nextProps.UI.errors && !nextProps.UI.loading){
+    //       this.setState({ 
+    //         content: '',
+    //         open: false,
+    //         errors: {}});
+    //      //  this.handleClose(); 
+    //    }
+    // }
+
+    static getDerivedStateFromProps(nextProps, state){
+        if(nextProps.UI.errors){
+            this.setState({errors:nextProps.UI.errors});
+        }else {
+            return null;
+        }
+        if(!nextProps.UI.errors && !nextProps.UI.loading){
+            this.setState({ 
             content: '',
             open: false,
             errors: {}});
-         //  this.handleClose(); 
-       }
+            //  this.handleClose(); 
+        }else {
+            return null;
+        }
     }
+
     handleOpen = () => {
         this.setState({ 
             open: true 
@@ -147,7 +160,7 @@ PostTweet.propTypes = {
     UI: PropTypes.object.isRequired,
     clearErrors: PropTypes.func.isRequired,
     theme: PropTypes.object.isRequired,
-    handleDrawer: PropTypes.func.isRequired,
+    // handleDrawer: PropTypes.func.isRequired,
 };
  
 const mapStateToProps = (state) => ({

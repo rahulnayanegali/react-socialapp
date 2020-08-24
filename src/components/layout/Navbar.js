@@ -1,21 +1,19 @@
 import React from 'react';
 import {changedarkMode} from '../../redux/actions/userActions';
 import PropTypes from 'prop-types';
-import Notifications from './Notifications'
 import PostTweet from '../tweet/PostTweet';
-import Button from '@material-ui/core/Button';
 import MuiSwitch from '@material-ui/core/Switch';
 
 //mui
 import {
     AppBar, Toolbar, IconButton, Typography, Hidden,
-    Drawer, Divider, CssBaseline, MenuList, MenuItem, Fab
+    Drawer, CssBaseline, MenuList, MenuItem, Fab
 } from '@material-ui/core'; 
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/HomeSharp';
 import FaceSharpIcon from '@material-ui/icons/FaceSharp';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { compose } from 'recompose';
+import { makeStyles } from '@material-ui/core/styles';
+
 // redux
 import { Link, withRouter,  } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -66,7 +64,9 @@ function Navbar(props) {
 	 // const theme = useTheme();
 	 const { authenticated } = props
 	const {
-		credentials: { handle, createdAt, imageUrl, bio, website, location }, 
+    credentials: { handle, 
+      // createdAt, imageUrl, bio, website, location 
+    }, 
 		} = props.user
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -78,9 +78,9 @@ function Navbar(props) {
 			//  setChecked(() => ({
 			//    checked:!checked
 			//  }));
-			setChecked(!checked)
+      setChecked(!checked)
+      setMobileOpen(false)
 			}
-
     const drawer = (
         <div>
 				{authenticated ? 
@@ -103,10 +103,10 @@ function Navbar(props) {
 					<MenuItem>
 					<PostTweet handleDrawerToggle={handleDrawerToggle} />																							
 					</MenuItem>
-					<MenuItem component={Link} >
+					{/* <MenuItem component={Link} >
 					<Notifications />
 						Notifications
-					</MenuItem>
+					</MenuItem> */}
 				</MenuList>
 						</> 
 					 ) : (
@@ -128,7 +128,8 @@ function Navbar(props) {
                 Home
               </MenuItem>
 						 {/* <Button color="inherit" component={Link} to="/signup">Signup</Button>  */}
-             <MenuItem onClick={handleChecked} onClick={() => setMobileOpen(false)}>
+             {/* <MenuItem onClick={handleChecked} onClick={() => setMobileOpen(false)}> */}
+             <MenuItem onClick={() => handleChecked} >
              <Fab color="default" variant="round" size="medium">
 							 <MuiSwitch color="primary" checked={checked} onChange={handleChecked} />
 						</Fab>
@@ -205,7 +206,7 @@ Navbar.propTypes = {
 	window: PropTypes.func,
 	user: PropTypes.object.isRequired,
 	 theme: PropTypes.object.isRequired,
-	 classes: PropTypes.object.isRequired,
+	//  classes: PropTypes.object.isRequired,
 	 authenticated: PropTypes.bool.isRequired,
 	 changedarkMode: PropTypes.func.isRequired,
  };

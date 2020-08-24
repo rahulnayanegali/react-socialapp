@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { getTweets } from '../redux/actions/dataActions';
 import TweetSkeleton from '../util/TweetSkeleton';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Navbar from '../components/layout/Navbar'
+
 const style = theme => ({
   [theme.breakpoints.up('md')]: {
     backgroundColor: 'red',
@@ -38,7 +38,7 @@ class home extends Component {
        {/* <Grid item sm={false} xs={false} md={2}>
          <Navbar />
        </Grid> */}
-				<Grid item direction={"column"} xs={12} sm={8} md={5} lg={5}  >
+				<Grid item  xs={12} sm={8} md={5} lg={5}>
         {/* <Grid item xs={12} sm={6} md={4} lg={4} > */}
           {redentTweetsMarkup}
 				</Grid>

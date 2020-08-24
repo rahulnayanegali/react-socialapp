@@ -29,18 +29,18 @@ class login extends Component {
 			buttonDisable: false,
 		}
    }
-   componentWillReceiveProps(nextProps){
-      if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
-	  }  
-   }
-   		// static getDerivedStateFromProps(props) {
-		// 	   if (props.UI.errors) {
-		// 		   return {
-		// 			   errors: props.UI.errors
-		// 		   }
-		// 	   }
-		//    }
+//    componentWillReceiveProps(nextProps){
+//       if (nextProps.UI.errors) {
+//       this.setState({ errors: nextProps.UI.errors });
+// 	  }  
+//    }
+   		static getDerivedStateFromProps(nextProps, state) {
+			   if (nextProps.UI.errors) {
+				   this.setState({ errors: nextProps.UI.errors })
+			   } else {
+				return null;
+			}
+		   }
 
 //    componentDidMount() {
 //     document.body.style.overflow = 'hidden';

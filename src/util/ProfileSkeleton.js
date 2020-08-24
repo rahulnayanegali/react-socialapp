@@ -41,7 +41,7 @@ const ProfileSkeleton = (props) => {
         <Paper className={classes.paper}>
             <div className={classes.profile}>
                 <div className="image-wrapper">
-                    <img src={TweetSkeletonImage} className="profile-image"/>
+                    <img src={TweetSkeletonImage} className="profile-image" alt="TweetSkeletonImage"/>
                 </div>
                 <hr /> 
                 <div className="profile-details">
