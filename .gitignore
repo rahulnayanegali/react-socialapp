@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/src/components/layout/Navbar2.js
+/src/components/layout/Navbar3.js
+/src/components/layout/Navbar4.js
 # testing
 /coverage
 
