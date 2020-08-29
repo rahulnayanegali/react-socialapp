@@ -93,7 +93,8 @@ class PostTweet extends Component {
     handleSubmit = (event) => {
        event.preventDefault();
        this.props.postTweet({content: this.state.content})
-       this.props.handleDrawerToggle();
+       this.props.handleCloseMenu();
+       this.handleClose()
     }
     render() {
        

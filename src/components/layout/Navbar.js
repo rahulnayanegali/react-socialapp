@@ -70,7 +70,10 @@ function Navbar(props) {
 		} = props.user
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-		};
+    };
+    const handleCloseMenu = () => {
+      setMobileOpen(false);
+    }
 	const handleChecked = (event) => {
 		// event.preventDefault();
 		// console.log(this.props.theme.darkMode)
@@ -101,7 +104,7 @@ function Navbar(props) {
 						Profile
 					</MenuItem>
 					<MenuItem>
-					<PostTweet handleDrawerToggle={handleDrawerToggle} />																							
+					<PostTweet handleDrawerToggle={handleDrawerToggle} handleCloseMenu={handleCloseMenu}/>																							
 					</MenuItem>
 					{/* <MenuItem component={Link} >
 					<Notifications />
