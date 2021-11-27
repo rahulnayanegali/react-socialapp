@@ -29,11 +29,7 @@ class login extends Component {
 			buttonDisable: false,
 		}
    }
-//    componentWillReceiveProps(nextProps){
-//       if (nextProps.UI.errors) {
-//       this.setState({ errors: nextProps.UI.errors });
-// 	  }  
-//    }
+
    		static getDerivedStateFromProps(nextProps, state) {
 			   if (nextProps.UI.errors) {
 				   this.setState({ errors: nextProps.UI.errors })
@@ -42,13 +38,7 @@ class login extends Component {
 			}
 		   }
 
-//    componentDidMount() {
-//     document.body.style.overflow = 'hidden';
-// }
 
-// componentWillUnmount() {
-//     document.body.style.overflow = 'unset';
-// }
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const userData = {
