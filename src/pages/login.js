@@ -30,6 +30,7 @@ class login extends Component {
 		}
    }
 
+// this is a test comment to check merge conflicts.
    		static getDerivedStateFromProps(nextProps, state) {
 			   if (nextProps.UI.errors) {
 				   this.setState({ errors: nextProps.UI.errors })
